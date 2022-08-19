@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Thu Aug 18 18:19:45 2022
-
 @author: Admin
 """
 from cryptography.fernet import Fernet
@@ -54,14 +53,13 @@ def create_database_tables():
         cur.execute(query)
         conn.commit()
         
-        print("queries executed successfully , all set !")
+        #print("queries executed successfully , all set !")
     except:
         pass
 
         
 create_database_tables()
 use_database()
-
 
 app = Flask(__name__)
 app.secret_key = "abc"  
@@ -71,11 +69,15 @@ app.config["SESSION_TYPE"] = "filesystem"
 
 Session(app)
 
-login_user = ""
 
 @app.route("/home.html" , methods = ["GET" , "POST"])
 def home_page():
-    return render_template("home.html")
+    
+    if not session.get("name"):
+        flash("Please login to continue")
+        return redirect("login.html") 
+    
+    return render_template("home.html" , msg1 = "logout.html" , msg2 = "LOGOUT")
     
 
 @app.route("/create.html" , methods = ["GET" , "POST"])
@@ -122,8 +124,17 @@ def view_page():
     msg = '<center><h2>'+name+'</h2>'
     query = "select field , link  from linktree_details where username like '{}'".format(name)
     cur.execute(query)
+    count = 0
+    direc = "left"
     for i in cur.fetchall():
-        msg += "<br><br><br><button id = 'click' onclick = \" window.location.href = '"+i[1]+"'\"; >"+i[0].upper()+"</button>" 
+        if(count%2 == 0):
+            direc = "left_move"
+        else:
+            direc = "right_move"
+            
+        msg += "<br><br><br><button  class = '"+direc+"' id = 'click' onclick = \" window.location.href = '"+i[1]+"'\"; >"+i[0].upper()+"</button>"
+                    
+        count+=1
     msg += "</center>"
     return render_template("view.html" , msg = Markup(msg))
 
@@ -140,23 +151,25 @@ def login():
         username = request.form.get("username")
         password = request.form.get("password")
         
-        query = "select password from user_details where username = '"+username+"';"
+        query = "select password from user_details where username like '"+username+"';"
         
         cur.execute(query)
         l =  cur.fetchall()
         try:
             passwd = dehash(l[0][0])
-            print(passwd , password , passwd == password)
+         #   print(passwd , password , passwd == password)
             if passwd == password:
-                flash("logged in")
+                flash("LOGGED IN")
                 session["name"] = username
+                return redirect("home.html")
+            
             else:
                 flash("WRONG PASSWORD ")
         except:
             flash("NO USER EXIST")
             
     
-    return render_template("login.html")
+    return render_template("login.html" , msg1 = "signup.html" , msg2 = "SIGNUP")
 
 
 def create_record(new_user , table_name):
@@ -165,7 +178,7 @@ def create_record(new_user , table_name):
     password = hashed(new_user.password)
     
     query = "insert into "+table_name+' values("{}" , "{}" );'.format(username , password)
-    print(query)
+    #print(query)
     
     try:
         cur.execute(query)
@@ -210,7 +223,7 @@ def logout():
     if session.get("name"):
         session.pop("name" , None)
         flash("LOG OUT SUCCESSFULL !")
-        return redirect("home.html")
+        return redirect("login.html")
     else:
         flash("You must Login in order to log out")
         return redirect("login.html")

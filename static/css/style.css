@@ -79,17 +79,14 @@ ul{
     border-radius: 50px;
 }
 
-#click
+
+
+.submit_button
 {
-    
-  background-color: aqua;
-  display: block;
-  width: 100%;
-  border: none;
-  padding: 14px 28px;
-  font-size: 16px;
-  cursor: pointer;
-  text-align: center;
+    background-color: orange;
+    border-radius: 15px;
+    padding: 15px;
+    font-size: 20;
 }
 
 form
@@ -99,6 +96,7 @@ form
     padding: 15px;
     border: 5px solid black;
     margin-top: 20px;
+    border-radius: 10px;
     background-color: azure;
 }
 .form_element{
@@ -111,3 +109,46 @@ form
 .form_element input{
     float:right;
 }
+
+.left_move
+{
+    animation: move1 3s infinite;
+    background-color: aqua;
+    width: 90%;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 20px;
+}
+.right_move
+{
+    animation: move2 3s infinite;
+    background-color: aqua;
+    width: 90%;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+    border-radius: 20px;
+}
+
+@keyframes move1 {
+    form{
+        left:0px;
+    }
+    to{
+        right:0px;
+    }
+}
+@keyframes move2 {
+    form{
+        right:0px;
+    }
+    to{
+        left:0px;
+    }
+}
+
+
+

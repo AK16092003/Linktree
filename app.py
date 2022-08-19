@@ -19,12 +19,15 @@ class Person:
 
 
 def hashed(s):
-    return s
-    return fernet.encrypt(s.encode())
+    a = ''
+    for i in s:
+        a += chr(128-ord(i))
+    return a
 def dehash(s):
-    return s
-    return fernet.decrypt(s).decode()
-
+    a = ''
+    for i in s:
+        a += chr(128-ord(i))
+    return a    
 
 import mysql.connector as mysql
 
@@ -114,7 +117,7 @@ def view():
        return redirect("view_.html?name="+name)
 
 @app.route("/view_.html" , methods = ["GET","POST"])
-def with_parameters():
+def view_page():
     name = request.args.get("name")
     msg = '<center><h2>'+name+'</h2>'
     query = "select field , link  from linktree_details where username like '{}'".format(name)
@@ -141,10 +144,8 @@ def login():
         
         cur.execute(query)
         l =  cur.fetchall()
-        print(l)
-        
         try:
-            passwd = l[0][0]
+            passwd = dehash(l[0][0])
             print(passwd , password , passwd == password)
             if passwd == password:
                 flash("logged in")

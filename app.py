@@ -188,6 +188,11 @@ def signup():
         new_user.username = request.form.get('username')
         new_user.password = request.form.get('password')
         
+        s = validate(new_user.username , new_user.password)
+        if(s!=True):
+            flash(s)
+            return render_template("signup.html")
+            
         response = create_record(new_user , "user_details")
         
         if response == "insertion done":
@@ -210,5 +215,16 @@ def logout():
         flash("You must Login in order to log out")
         return redirect("login.html")
     
+
+
+def validate(user , pas):
+ 
+    if user.replace(" ","") == "":
+        return "No Username entered!"
+    if pas.replace(" ","") == "":
+        return "No Password entered!"
+    if len(pas)  < 8:
+        return "Password should have minimum of 8 characters"
+    return True
 
 app.run()

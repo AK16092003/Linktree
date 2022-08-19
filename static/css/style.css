@@ -1,0 +1,113 @@
+#heading
+{
+    background-color: beige;
+    padding: 10px;
+}
+#heading a{
+    display: inline;
+    overflow: hidden;
+    padding: 10px;
+    background-color: aqua;
+	text-decoration: none;
+}
+#heading #home
+{
+    background-color: orange;
+}
+h2{
+    background-color: aquamarine;
+    padding:20px;
+    margin:0px;
+}
+#linktree{
+    background-color: burlywood;
+    padding:20px;
+    margin:0px;
+}
+
+#welcome
+{
+
+    background-color: burlywood;
+    padding:20px;
+    margin:0px;    
+}
+canvas
+{
+    background-color: white;
+}
+li
+{
+    text-align: left;
+}
+
+.leaderboard_table{
+	border : thick solid;
+	width : 60vw;
+}
+.leaderboard_table td{
+	border : thick solid;
+	text-align:center;
+	background-color: white;
+}
+
+.leaderboard_table tr.header td{
+	background-color: lightgreen;
+	font-weight: bold;
+	font-size:medium;
+}
+
+img{
+    width : 70%;
+    opacity: 10%;
+}
+
+#about
+{
+    background-color: lightblue;
+    padding: 10px;    
+}
+#para
+{
+    background-color: beige;
+    padding: 10px;  
+    margin : 0px;
+}
+
+ul{
+    background-color: beige;
+    border-radius: 50px;
+}
+
+#click
+{
+    
+  background-color: aqua;
+  display: block;
+  width: 100%;
+  border: none;
+  padding: 14px 28px;
+  font-size: 16px;
+  cursor: pointer;
+  text-align: center;
+}
+
+form
+{
+    width:fit-content;
+    height: fit-content;
+    padding: 15px;
+    border: 5px solid black;
+    margin-top: 20px;
+    background-color: azure;
+}
+.form_element{
+    margin: 10px;
+    text-align: left;
+}
+.form_element select{
+    float:right;
+}
+.form_element input{
+    float:right;
+}

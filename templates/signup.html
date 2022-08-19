@@ -1,0 +1,53 @@
+<html>
+
+<head>
+    <title>LINK TREE</title>
+    <link rel = "stylesheet" href = "{{url_for('static' , filename = 'css/style.css')}}">
+</head>
+
+<body bgcolor="lightyellow">
+
+    {% with messages = get_flashed_messages() %}  
+    {% if messages %}  
+          {% for message in messages %}  
+               <script>alert('{{ message }}');</script>  
+          {% endfor %}  
+    {% endif %}  
+ {% endwith %}  
+
+<center><h2><u>LINK TREE</u></h2></center>
+<div id = "heading">
+    <a href = "home.html" id = "home">HOME</a>
+    <a href = "login.html">LOGIN</a>
+    <a href = "signup.html">SIGNUP</a>
+    <a href = "logout.html">LOGOUT</a>
+
+</div>
+
+
+
+<center>
+<form method = "POST" action = "/signup.html">
+    <center><h2>SIGN UP</h2></center>
+    <br>
+    <p class = "form_element">ENTER A USERNAME&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+        <input type="text" name = "username">
+    </p>
+    <p class = "form_element">ENTER A PASSWORD&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:
+        <input type="password" name = "password">
+    </p>
+    <br><br>
+    <center>
+        <button type = "submit" class = "submit_button">SUBMIT</button>
+    </center>
+</form>
+</center>
+
+{%if msg%}
+<script>alert("{{msg}}");</script>
+{%endif%}
+
+
+</center>
+</body>
+</html>

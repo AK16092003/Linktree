@@ -1,0 +1,29 @@
+<html>
+
+<head>
+    <title>LINK TREE</title>
+    <link rel = "stylesheet" href = "{{url_for('static' , filename = 'css/style.css')}}">
+</head>
+
+<body bgcolor="lightyellow">
+    {% with messages = get_flashed_messages() %}  
+         {% if messages %}  
+               {% for message in messages %}
+               <script>alert('{{ message }}');</script>  
+               {% endfor %}  
+         {% endif %}  
+      {% endwith %}  
+<center><h2 style = "background-color: burlywood;"><u>LINK TREE</u></h2></center>
+
+<br>
+
+<center>
+    <br>
+        {{msg}}
+     <br>
+</center>
+
+<br>
+
+</body>
+</html>

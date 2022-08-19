@@ -1,0 +1,60 @@
+<html>
+
+<head>
+    <title>LINK TREE</title>
+    <link rel = "stylesheet" href = "{{url_for('static' , filename = 'css/style.css')}}">
+</head>
+
+<body bgcolor="lightyellow">
+
+{% with messages = get_flashed_messages() %}  
+{% if messages %}  
+          {% for message in messages %} 
+          <script>alert('{{ message }}');</script>  
+          {% endfor %}  
+{% endif %}  
+{% endwith %}  
+
+
+<center><h2><u>LINK TREE</u></h2></center>
+<div id = "heading">
+    <a href = "home.html" id = "home">HOME</a>
+    <a href = "login.html">LOGIN</a>
+    <a href = "signup.html">SIGNUP</a>
+    <a href = "logout.html">LOGOUT</a>
+
+</div>
+
+<br>
+<center>
+<h2 id = "welcome">Welcome to linktree !</h2>
+<img src = "{{url_for('static' , filename = 'images/img_1.jpg')}}">
+<h2 id = "about"><u>ABOUT</u></h2>
+    <h2>
+    <ul>
+    <li>Linktree is a website throught which you can create your own profile list.</li>
+    <li>Create your own bio link and share it with others.</li>
+    <li>Your can use this to publisise your self or your work!</li>
+    <li>Hurry up , scroll below to create your own link</li>
+    </ul>
+    </h2>
+</center>
+
+
+<br>
+<br>
+<center>
+    <button id = "click" onclick = "window.location.href = 'create.html';" >CREATE YOUR OWN LINKTREE</button>
+    <br>
+    <br>
+    <br>
+    <button id = "click" onclick = "window.location.href = 'view.html';" >VIEW YOUR OWN LINKTREE</button>
+
+
+{%if msg%}
+<script>alert("{{msg}}");</script>
+{%endif%}
+
+</center>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<html>
+
+<head>
+    <title>LINK TREE</title>
+    <link rel = "stylesheet" href = "{{url_for('static' , filename = 'css/style.css')}}">
+</head>
+
+<body bgcolor="lightyellow">
+    {% with messages = get_flashed_messages() %}  
+         {% if messages %}  
+               {% for message in messages %}
+               <script>alert('{{ message }}');</script>  
+               {% endfor %}  
+         {% endif %}  
+      {% endwith %}  
+<center><h2><u>LINK TREE</u></h2></center>
+<div id = "heading">
+    <a href = "home.html" id = "home">HOME</a>
+    <a href = "login.html">LOGIN</a>
+    <a href = "signup.html">SIGNUP</a>
+    <a href = "logout.html">LOGOUT</a>
+
+</div>
+
+<br>
+<center>
+<h2 id = "welcome">Create your linktree here !</h2>
+<center>
+    <form method = "POST" action = "/create.html">
+        <center><h2>ADD LINK : </h2></center>
+        <br>
+        <p>ENTER FEILD NAME: 
+        <input type="text" name = "field" style="width:70em;">
+        </p><br>
+        <p>ENTER YOUR LINK: 
+        <input type="text" name = "link" style="width:70em;">
+        </p><br>
+        <center>
+            <button type = "submit" class = "submit_button" style = "font-size:15">ADD LINK</button>
+        </center>
+    </form>
+</center>
+
+<center>
+    <form method = "POST" action = "/home.html">
+        <center><h3><u>LINKS:</u></h3></center>
+        <br>
+        {{msg}}
+        <br>
+    </form>
+</center>
+</center>
+
+
+<br>
+
+</body>
+</html>
